@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh 
 ####--Instructions to back up this server and Some Comments--###
 # To become the administrative 'root' user to run this script, ##
 # Enter 'sudo su -i' at the command prompt. LTS Servers        ##
@@ -38,17 +38,17 @@
 ## What follows is the content of the script. You will be
 ## prompted to enter the root password at least once.
 
-echo "*******************************************"
-echo "* Welcome to the Lyrasis Backup Procedure *"
-echo "* --------------------------------------- *"
-echo "* You need do nothing but wait for        *"
-echo "* the secure transfer of this week's      *"
-echo "*                                         *"
-echo "* Failure to do these steps in the        *"
-echo "* right order will result in freezing     *"
-echo "* the server or corrupting the backup     *"
-echo "* file.                                   *"
-echo "******************************************  "
+#echo "*******************************************"
+#echo "* Welcome to the Lyrasis Backup Procedure *"
+#echo "* --------------------------------------- *"
+#echo "* You need do nothing but wait for        *"
+#echo "* the secure transfer of this week's      *"
+#echo "*                                         *"
+#echo "* Failure to do these steps in the        *"
+#echo "* right order will result in freezing     *"
+#echo "* the server or corrupting the backup     *"
+#echo "* file.                                   *"
+#echo "******************************************  "
 
 #  The following 2 lines makes the script treat the spaces in the
 #  variables as 'just another character'
@@ -69,7 +69,7 @@ h=`hostname`
 #echo "$h is the hostname"
 
 
-rsync -av ${directory1}*.tar.gz /mnt/mfs/
+#rsync -av ${directory1}*.tar.gz utility01@192.168.10.13:/mnt/Bin100/utility01/back
 
 # The following lines find and compress what will go into this week's
 # backup archive files and delete the old file copies.
@@ -109,12 +109,12 @@ tar czf "${directory2}""$h"_roothome.tar.gz /root
 tar czf "${directory1}""$h"_backups_`date '+%F_%H_%M'`.tar.gz "${directory2}"*.tar.gz
 # Bundle the archives for transit
 
-find "${directory1}"\*.tar.gz -mtime +14 -exec rm {} \;
+find "${directory1}"\*.tar.gz -mtime +29 -exec rm {} \;
 # Remove 2 week old back-ups of server from /root/ folder
 
 # rsync -av /src/foo/ /dest/foo
-rsync -av "${directory1}"*tar.gz /mnt/mfs/
+rsync -av "${directory1}"*tar.gz utility01@192.168.10.13:/mnt/Bin100/utility01/back/
 
-find /mnt/mfs/\*.tar.gz -mtime +28 -exec rm {} \;
+#find /mnt/mfs/\*.tar.gz -mtime +28 -exec rm {} \;
 # Remove 4 week old back-ups of server from /root/ folder
 
