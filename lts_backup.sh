@@ -94,6 +94,10 @@ tar czf "${directory2}""$h"_opt.tar.gz /opt
 tar czf "${directory2}""$h"_mysql_files.tar.gz /var/lib/mysql
 # Replace existing archive of mysql files (in case needed)
 
+tar czf "${directory2}""$h"_ils_files.tar.gz /openils
+# Replace existing archive of mysql files (in case needed)
+
+
 tar czf "${directory2}""$h"_pgsql_files.tar.gz /var/lib/postgresql/[89]*/
 # Replace existing archive of postgresql files (in case needed)
 
