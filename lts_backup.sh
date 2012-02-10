@@ -73,6 +73,7 @@ h=`hostname`
 
 # The following lines find and compress what will go into this week's
 # backup archive files and delete the old file copies.
+rm -f ${directory2}*.* 
 #-----------------------------------------
 
 if [ -d /var/lib/mysql ]; then
@@ -93,7 +94,7 @@ tar czf "${directory2}""$h"_opt.tar.gz /opt
 tar czf "${directory2}""$h"_mysql_files.tar.gz /var/lib/mysql
 # Replace existing archive of mysql files (in case needed)
 
-tar czf "${directory2}""$h"_pgsql_files.tar.gz /var/lib/postgresql/
+tar czf "${directory2}""$h"_pgsql_files.tar.gz /var/lib/postgresql/[89]*/
 # Replace existing archive of postgresql files (in case needed)
 
 tar czf "${directory2}""$h"_www_files.tar.gz /var/www
