@@ -35,21 +35,6 @@
 #################################################################
  ################################################################
 
-## What follows is the content of the script. You will be
-## prompted to enter the root password at least once.
-
-#echo "*******************************************"
-#echo "* Welcome to the Lyrasis Backup Procedure *"
-#echo "* --------------------------------------- *"
-#echo "* You need do nothing but wait for        *"
-#echo "* the secure transfer of this week's      *"
-#echo "*                                         *"
-#echo "* Failure to do these steps in the        *"
-#echo "* right order will result in freezing     *"
-#echo "* the server or corrupting the backup     *"
-#echo "* file.                                   *"
-#echo "******************************************  "
-
 #  The following 2 lines makes the script treat the spaces in the
 #  variables as 'just another character'
 IFS='
@@ -64,16 +49,14 @@ if [ ! -d "${directory2}" ]; then
     chmod 777 -R /backup
 fi
 
-#echo `hostname` " is the hostname function"
+# This sets the hostname variable to be put into the filenames for the tarballs
 h=`hostname`
-#echo "$h is the hostname"
-
-
-#rsync -av ${directory1}*.tar.gz utility01@192.168.10.13:/mnt/Bin100/utility01/back
 
 # The following lines find and compress what will go into this week's
 # backup archive files and delete the old file copies.
+
 rm -f ${directory2}*.* 
+# Deletes the 1st-stage tarballs, so they are not duplicated in the transferred tarball
 #-----------------------------------------
 
 if [ -d /var/lib/mysql ]; then
@@ -114,12 +97,10 @@ tar czf "${directory2}""$h"_roothome.tar.gz /root
 tar czf "${directory1}""$h"_backups_`date '+%F_%H_%M'`.tar.gz "${directory2}"*.tar.gz
 # Bundle the archives for transit
 
-find "${directory1}"\*.tar.gz -mtime +29 -exec rm {} \;
-# Remove 2 week old back-ups of server from /root/ folder
+find "${directory1}"\*.tar.gz -mtime +4 -exec rm -f {} \;
+# Remove 4-day-old back-ups of server from /backup/ folder
 
-# rsync -av /src/foo/ /dest/foo
+# The following line sends the transfer tarball to storage 
 rsync -av "${directory1}"*tar.gz utility01@192.168.10.13:/mnt/Bin100/utility01/back/
 
-#find /mnt/mfs/\*.tar.gz -mtime +28 -exec rm {} \;
-# Remove 4 week old back-ups of server from /root/ folder
 
