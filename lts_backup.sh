@@ -62,11 +62,14 @@ rm -f ${directory2}*.*
 if [ -d /var/lib/mysql ]; then
     mysqldump -u root -pltslyr@s1s1438 --all-databases > "${directory2}""$h"_mysql_dumpall.sql
     # Makes a new data-dump 
-fi
-tar czf "${directory2}""$h"_mysql_dump_`date '+%F_%H_%M'`.tar.gz "${directory2}""$h"_mysql_dumpall.sql
-# compress newest data-dump
 
-cp /var/lib/postgresql/*.gz "${directory2}"
+    tar czf "${directory2}""$h"_mysql_dump_`date '+%F_%H_%M'`.tar.gz "${directory2}""$h"_mysql_dumpall.sql
+    # compress newest data-dump
+fi
+
+if [ -f /var/lib/postgresql/*.gz ]; then
+    cp /var/lib/postgresql/*.gz "${directory2}"
+fi
 
 tar czf "${directory2}""$h"_etc.tar.gz /etc
 # Replace existing archive of the /etc directory
@@ -74,17 +77,22 @@ tar czf "${directory2}""$h"_etc.tar.gz /etc
 tar czf "${directory2}""$h"_opt.tar.gz /opt
 # Replace existing archive of the /opt
 
+if [ -d /var/lib/mysql ]; then
 tar czf "${directory2}""$h"_mysql_files.tar.gz /var/lib/mysql
 # Replace existing archive of mysql files (in case needed)
+fi
 
-tar czf "${directory2}""$h"_ils_files.tar.gz /openils
-# Replace existing archive of mysql files (in case needed)
+if [ -d /var/lib/openils ]; then
+    tar czf "${directory2}""$h"_ils_files.tar.gz /openils
+    # Replace existing archive of mysql files (in case needed)
+fi
 
-
+if [ -d /var/lib/postgresql ]; then
 tar czf "${directory2}""$h"_pgsql_files.tar.gz /var/lib/postgresql/[89]*/
 # Replace existing archive of postgresql files (in case needed)
+fi
 
-tar czf "${directory2}""$h"_www_files.tar.gz /var/www
+tar czf "${directory2}""$h"_www_files.tar.gz /var/w*
 # Replace existing archive of web-site files
 
 tar czf "${directory2}""$h"_homes.tar.gz /home
@@ -97,7 +105,7 @@ tar czf "${directory2}""$h"_roothome.tar.gz /root
 tar czf "${directory1}""$h"_backups_`date '+%F_%H_%M'`.tar.gz "${directory2}"*.tar.gz
 # Bundle the archives for transit
 
-find "${directory1}"\*.tar.gz -mtime +4 -exec rm -f {} \;
+find "${directory1}"*.tar.gz -mtime +4 -exec rm -f {} \;
 # Remove 4-day-old back-ups of server from /backup/ folder
 
 # The following line sends the transfer tarball to storage 
