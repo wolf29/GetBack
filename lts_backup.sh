@@ -92,8 +92,10 @@ tar czf "${directory2}""$h"_pgsql_files.tar.gz /var/lib/postgresql/[89]*/
 # Replace existing archive of postgresql files (in case needed)
 fi
 
+if [ -d /var/w* ]; then
 tar czf "${directory2}""$h"_www_files.tar.gz /var/w*
 # Replace existing archive of web-site files
+fi
 
 tar czf "${directory2}""$h"_homes.tar.gz /home
 # much custom coding appears to be in these directories
