@@ -60,7 +60,7 @@ rm -f ${directory2}*.*
 #-----------------------------------------
 
 if [ -d /var/lib/mysql ]; then
-    mysqldump -u root -pltslyr@s1s1438 --all-databases > "${directory2}""$h"_mysql_dumpall.sql
+    mysqldump -u root -pYOURSECRETPASSWORD --all-databases > "${directory2}""$h"_mysql_dumpall.sql
     # Makes a new data-dump 
 	# For mysqldump to work, there needs to be a space between -u and the username, 
 	#  but no space betweep -p and the password
