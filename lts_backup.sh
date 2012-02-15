@@ -62,7 +62,8 @@ rm -f ${directory2}*.*
 if [ -d /var/lib/mysql ]; then
     mysqldump -u root -pltslyr@s1s1438 --all-databases > "${directory2}""$h"_mysql_dumpall.sql
     # Makes a new data-dump 
-
+	# For mysqldump to work, there needs to be a space between -u and the username, 
+	#  but no space betweep -p and the password
     tar czf "${directory2}""$h"_mysql_dump_`date '+%F_%H_%M'`.tar.gz "${directory2}""$h"_mysql_dumpall.sql
     # compress newest data-dump
 fi
