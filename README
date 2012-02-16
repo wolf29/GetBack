@@ -1,0 +1,10 @@
+GetBack Backup System 
+Produced for Lyrasis Technology Services
+M. Wolf Halton <wolf.halton@lyrasis.org>
+README
+
+The GetBack backup system is designed specifically for libraries, to handle custom backups for ILS and Repository software needs.  GetBack is intended to be simple to implement and simple to use.  The dependencies are common opensource packages found on most Linux and Unix servers. The first prototype was developed in 2011 for a very fragile system that could not be updated and upon which no new software could be installed.  This documentation is related to Version 0.5. GetBack makes a compressed backup of files required for rebuilding critical applications.  The design of this application presumes basic Linux administrative skills and understanding of the command line for basic file manipulation.  This documentation also assumes that you use a Linux desktop as your usual window into your network.  No Microsoft Windows or DOS Commands will be used.
+
+More details on installation and use are available in the GetBack_System_Documentation.odt document.
+
+GPL3 license 2011-2012
