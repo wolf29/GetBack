@@ -1,7 +1,7 @@
 #!/bin/sh 
 ####--Instructions to back up this server and Some Comments--###
 # To become the administrative 'root' user to run this script, ##
-# Enter 'sudo su -i' at the command prompt. LTS Servers        ##
+# Enter 'sudo su -i' at the command prompt. Linux Servers can  ##
 # allow certain users to access root privilege.                ##
 # No other users (beyond these specified) are                  ##
 # allowed to act as root at all.                               ##
