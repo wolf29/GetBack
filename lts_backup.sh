@@ -16,6 +16,7 @@
 # as the root user                                             ##
 #                                                              ##
 # (c) Copyright 2012 Wolf Halton, Lyrasis                      ##
+#                          <wolf@sourcefreedom.com>            ##
 #                                                              ##
 #    This program is free software: you can redistribute it    ##
 #   and/or modify it under the terms of the GNU General        ##
@@ -108,7 +109,7 @@ tar czf "${directory2}""$h"_roothome.tar.gz /root
 tar czf "${directory1}""$h"_backups_`date '+%F_%H_%M'`.tar.gz "${directory2}"*.tar.gz
 # Bundle the archives for transit
 
-find "${directory1}"*.tar.gz -mtime +4 -exec rm -f {} \;
+find "${directory1}"LTS* -mtime +4 -exec rm -f {} \;
 # Remove 4-day-old back-ups of server from /backup/ folder
 
 # The following line sends the transfer tarball to storage 
