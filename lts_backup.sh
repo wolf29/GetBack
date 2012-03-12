@@ -109,7 +109,7 @@ tar czf "${directory2}""$h"_roothome.tar.gz /root
 tar czf "${directory1}""$h"_backups_`date '+%F_%H_%M'`.tar.gz "${directory2}"*.tar.gz
 # Bundle the archives for transit
 
-find "${directory1}"LTS* -mtime +4 -exec rm -f {} \;
+find "${directory1}""$h"* -mtime +4 -exec rm -f {} \;
 # Remove 4-day-old back-ups of server from /backup/ folder
 
 # The following line sends the transfer tarball to storage 
