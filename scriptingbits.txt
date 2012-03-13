@@ -1,0 +1,12 @@
+find "${directory1}"*.tar.gz -mtime +4 -exec rm -f {} \;
+
+echo `find "${directory3}"*.tar.gz`
+
+find "${directory3}"*.tar.gz -mtime +4 -exec rm -f {} \;
+
+freenas# find /mnt/Bin100/*/back/*.tar.gz -mtime +14 -exec rm {} \;
+# To clear out the older files from Bin100
+
+freenas# find /mnt/Bin200/qcb/*/back/*.tar.gz -mtime +28 -exec rm {} \;
+# To clear out Bin200
+
