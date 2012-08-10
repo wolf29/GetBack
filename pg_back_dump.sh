@@ -12,7 +12,7 @@
 #                                                                     ##
 # The way to become the postgres user in the simplest possible        ##
 # way, change to being the administrative 'root' user by typing       ##
-# 'sudo su -i' on the command line, then 'sudo - postgres' will       ##
+# 'sudo -i' on the command line, then 'su - postgres' will            ##
 # automatically get you to postgres user's home folder.               ##
 #                                                                     ##
 # If you skip the free-standing hyphen between 'sudo' and 'postgres'  ##
@@ -56,6 +56,6 @@ pg_dumpall > `hostname`_pg_dumpall.sql
 tar czf `hostname`_pg_dumpall_`date '+%F_%H_%M'`.tar.gz `hostname`_pg_dumpall.sql		
 # Copies the compressed data-dump to the backups prep folder
 
-find /var/lib/postgresql/`hostname`_pg_dumpall* -mtime +11 -exec rm {} \;
+find `pwd`"/" -name `hostname`"_pg_dumpall_*" -mtime +7 -exec rm {} \;
 # Removes any data-dump older than 7 days
 ## This is all done 'silently'
