@@ -43,8 +43,8 @@ IFS='
 #-----------------
 #  This section guarantees that there is a directory into 
 #    which to put all the backups.
-directory2="/backup/backs/"
-directory1="/backup/"
+directory2="/home/backup/backs/"
+directory1="/home/backup/"
 if [ ! -d "${directory2}" ]; then
     mkdir -p "${directory2}"
     chmod 777 -R /backup

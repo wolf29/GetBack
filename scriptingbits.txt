@@ -10,3 +10,7 @@ freenas# find /mnt/Bin100/*/back/*.tar.gz -mtime +14 -exec rm {} \;
 freenas# find /mnt/Bin200/qcb/*/back/*.tar.gz -mtime +28 -exec rm {} \;
 # To clear out Bin200
 
+freenas# crontab -l
+20	4	*	*	*	rsync -var /mnt/Bin100/* /mnt/Bin200/qcb/
+0	5	*	*	*	find /mnt/Bin100/*/back/*.tar.gz -mtime +14 -exec rm {} \;
+0	6	*	*	*	find /mnt/Bin200/qcb/*/back/*.tar.gz -mtime +28 -exec rm {} \;
