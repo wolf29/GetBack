@@ -15,7 +15,7 @@
 #     'lts_backup.sh'                                          ##
 # as the root user                                             ##
 #                                                              ##
-# (c) Copyright 2012 Wolf Halton, Lyrasis                      ##
+# (c) Copyright 2012 Wolf Halton                               ##
 #                          <wolf@sourcefreedom.com>            ##
 #                                                              ##
 #    This program is free software: you can redistribute it    ##
@@ -113,6 +113,6 @@ find "${directory1}""$h"* -mtime +4 -exec rm -f {} \;
 # Remove 4-day-old back-ups of server from /backup/ folder
 
 # The following line sends the transfer tarball to storage 
-rsync -av "${directory1}"*tar.gz utility01@192.168.10.13:/mnt/Bin100/utility01/back/
+rsync -av "${directory1}"*tar.gz storrac@backup-01:/home/storrac/"$h"/
 
 
