@@ -113,6 +113,6 @@ find "${directory1}""$h"* -mtime +4 -exec rm -f {} \;
 # Remove 4-day-old back-ups of server from /backup/ folder
 
 # The following line sends the transfer tarball to storage 
-rsync -av "${directory1}"*tar.gz storrac@backup-01:/home/storrac/"$h"/
+rsync -rav "${directory1}"*tar.gz storrac@backup-01:/home/storrac/"$h"/
 
 
