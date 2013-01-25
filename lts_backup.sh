@@ -99,7 +99,7 @@ tar czf "${directory2}""$h"_www_files.tar.gz /var/w*
 # Replace existing archive of web-site files
 fi
 
-tar czf "${directory2}""$h"_homes.tar.gz /home
+tar czf "${directory2}""$h"_homes.tar.gz --exclude="/home/backup" /home
 # much custom coding appears to be in these directories
 
 tar czf "${directory2}""$h"_roothome.tar.gz /root
