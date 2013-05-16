@@ -30,7 +30,7 @@
 #                                                                     ##
 # The 'ls -l' command will show you the contents of the folder.       ##
 #                                                                     ##
-# (c)2011-2012 -  Wolf Halton, Lyrasis                          ########
+# (c)2011-2012 -  Wolf Halton <wolf@sourcefreedom.com,          ########
 #    This program is free software: you can redistribute it    #######
 #   and/or modify it under the terms of the GNU General        ##
 #   Public License as published by the Free Software           ##
